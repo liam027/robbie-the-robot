@@ -7,7 +7,7 @@ class RobotWorld {
     this.director = new Director(numRobots, instructions)
     this.deliveries = {}
   }
-  step() {
+  execute_turn() {
     // Execute one turn from the remaining instructions
     let robot_delivery = this.director.operate_next_robot()
     if(robot_delivery) {
@@ -22,7 +22,7 @@ class RobotWorld {
     // Execute all remaining instructions
     console.log(this.director.turnInstruction);
     while(this.director.turnInstruction) {
-      this.step()
+      this.execute_turn()
     }
   }
   robot_positions() {
