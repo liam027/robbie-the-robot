@@ -8,6 +8,7 @@ class RobotWorld {
     this.deliveries = {}
   }
   step() {
+    // Execute one turn from the remaining instructions
     let robot_delivery = this.director.operate_next_robot()
     if(robot_delivery) {
       this.make_delivery(robot_delivery)
@@ -18,6 +19,7 @@ class RobotWorld {
     display("--------------------------")
   }
   execute_all() {
+    // Execute all remaining instructions
     console.log(this.director.turnInstruction);
     while(this.director.turnInstruction) {
       this.step()
@@ -27,7 +29,9 @@ class RobotWorld {
     // Display the current position of the robots
     return this.robots.map((robot) => { return robot.position })
   }
-  houses_with_packages(packageThreshold = 0) {
+  houses_with_packages(packageThreshold = 1) {
+    // Return the number of houses that have atleast packageThreshold packages
+    // delivered
     let housesOverPackageThreshold = []
     for (let key in this.deliveries) {
       if(this.deliveries[key] >= packageThreshold){
@@ -37,6 +41,7 @@ class RobotWorld {
     display(`HOUSES THAT HAVE RECEIVED ATLEAST ${packageThreshold} PACKAGES: [${housesOverPackageThreshold.join('], [')}]`)
   }
   deliveries_made() {
+    // Return the total number of deliveries made
     let totalDeliveries = 0
     for (let key in this.deliveries) {
       totalDeliveries += this.deliveries[key]
