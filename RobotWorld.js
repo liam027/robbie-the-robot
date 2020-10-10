@@ -1,0 +1,67 @@
+const Director = require('./Director')
+const display = require('./Display')
+
+class RobotWorld {
+  constructor(numRobots = 1, instructions) {
+    this.numRobots = numRobots
+    this.director = new Director(numRobots, instructions)
+    this.deliveries = {}
+  }
+  step() {
+    let robot_delivery = this.director.operate_next_robot()
+    if(robot_delivery) {
+      this.make_delivery(robot_delivery)
+    }
+    else {
+      display("CANNOT DELIVER.")
+    }
+    display("--------------------------")
+  }
+  execute_all() {
+    console.log(this.director.turnInstruction);
+    while(this.director.turnInstruction) {
+      this.step()
+    }
+  }
+  robot_positions() {
+    // Display the current position of the robots
+    return this.robots.map((robot) => { return robot.position })
+  }
+  houses_with_packages(packageThreshold = 0) {
+    let housesOverPackageThreshold = []
+    for (let key in this.deliveries) {
+      if(this.deliveries[key] >= packageThreshold){
+        housesOverPackageThreshold.push(key)
+      }
+    }
+    display(`HOUSES THAT HAVE RECEIVED ATLEAST ${packageThreshold} PACKAGES: [${housesOverPackageThreshold.join('], [')}]`)
+  }
+  deliveries_made() {
+    let totalDeliveries = 0
+    for (let key in this.deliveries) {
+      totalDeliveries += this.deliveries[key]
+    }
+    display(`TOTAL DELIVERIES MADE: ${totalDeliveries}`)
+  }
+
+  make_delivery(robot) {
+    display(`Delivery made to ${robot.position.x},${robot.position.y}`)
+    let positionKey = `${robot.position.x},${robot.position.y}`
+    if (positionKey in this.deliveries) {
+      this.deliveries[positionKey] = this.deliveries[positionKey] + 1
+    }
+    else {
+      this.deliveries[positionKey] = 1
+    }
+  }
+}
+
+let game = new RobotWorld(3, '<^><<^<V<<<V')
+
+game.execute_all()
+game.deliveries_made()
+game.houses_with_packages(1)
+game.houses_with_packages(2)
+
+module.exports = RobotWorld
+

@@ -1,0 +1,14 @@
+{
+  "name": "robbie-the-robot",
+  "version": "1.0.0",
+  "description": "A robot package delivery simulator",
+  "main": "main.js",
+  "scripts": {
+    "test": "NODE_ENV=test jest --verbose --runInBand"
+  },
+  "author": "Liam Harland",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^26.5.2"
+  }
+}
