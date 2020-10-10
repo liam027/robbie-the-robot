@@ -14,7 +14,7 @@ class RobotWorld {
       this.make_delivery(robot_delivery)
     }
     else {
-      display("CANNOT DELIVER.")
+      display("Robot cannot deliver. Space is already occupied.")
     }
     display("--------------------------")
   }
@@ -38,7 +38,7 @@ class RobotWorld {
         housesOverPackageThreshold.push(key)
       }
     }
-    display(`HOUSES THAT HAVE RECEIVED ATLEAST ${packageThreshold} PACKAGES: [${housesOverPackageThreshold.join('], [')}]`)
+    display(`Houses that have received atleast ${packageThreshold} package${packageThreshold > 1 ? 's' : ''}: [${housesOverPackageThreshold.join('], [')}]`)
   }
   deliveries_made() {
     // Return the total number of deliveries made
@@ -46,7 +46,7 @@ class RobotWorld {
     for (let key in this.deliveries) {
       totalDeliveries += this.deliveries[key]
     }
-    display(`TOTAL DELIVERIES MADE: ${totalDeliveries}`)
+    display(`Total deliveries made: ${totalDeliveries}`)
   }
 
   make_delivery(robot) {

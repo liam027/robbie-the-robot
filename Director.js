@@ -19,7 +19,7 @@ class Director {
       return deliveryStatus
     }
     else {
-      display("SIMULATION OVER. NO MORE INSTRUCTIONS AVAILABLE.")
+      display("---- Simulation over. No more instructions available. ----")
     }
   }
 
