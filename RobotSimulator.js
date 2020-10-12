@@ -20,7 +20,7 @@ class RobotSimulator {
   }
   execute_all() {
     // Execute all remaining instructions
-    console.log(this.director.turnInstruction);
+    log(this.director.turnInstruction);
     while(this.director.turnInstruction) {
       this.execute_turn()
     }
@@ -69,5 +69,6 @@ class RobotSimulator {
 // An example
 let sim = new RobotSimulator(3, '<^><<^<V<<<V')
 
+sim.execute_all()
 module.exports = RobotSimulator
 
