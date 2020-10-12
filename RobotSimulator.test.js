@@ -1,12 +1,12 @@
 const { expect } = require('@jest/globals')
-const RobotWorld = require('./RobotWorld')
+const RobotSimulator = require('./RobotSimulator')
 
-describe('Robot World', () => {
+describe('Robot Simulator', () => {
   test('turn instructions equal the number of robots', () => {
-    let game = new RobotWorld(2, '^^<<')
+    let game = new RobotSimulator(2, '^^<<')
     expect(game.getTurnInstructions()).toHaveLength(2)
 
-    game = new RobotWorld(5, '^^<<*^^<<*')
+    game = new RobotSimulator(5, '^^<<*^^<<*')
     expect(game.getTurnInstructions()).toHaveLength(5)
   })
 })

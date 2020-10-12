@@ -1,7 +1,7 @@
 const Director = require('./Director')
 const log = require('./Logger')
 
-class RobotWorld {
+class RobotSimulator {
   constructor(numRobots = 1, instructions) {
     this.numRobots = numRobots
     this.director = new Director(numRobots, instructions)
@@ -66,12 +66,8 @@ class RobotWorld {
   }
 }
 
-let game = new RobotWorld(3, '<^><<^<V<<<V')
+// An example
+let sim = new RobotSimulator(3, '<^><<^<V<<<V')
 
-game.execute_all()
-game.deliveries_made()
-game.houses_with_packages(1)
-game.houses_with_packages(2)
-
-module.exports = RobotWorld
+module.exports = RobotSimulator
 
