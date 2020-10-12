@@ -1,4 +1,4 @@
-const display = require('./Display')
+const display = require('./Logger')
 
 class Robot {
   constructor(id) {

@@ -1,5 +1,5 @@
 const Director = require('./Director')
-const display = require('./Display')
+const log = require('./Logger')
 
 class RobotWorld {
   constructor(numRobots = 1, instructions) {
@@ -14,9 +14,9 @@ class RobotWorld {
       this.make_delivery(robot_delivery)
     }
     else {
-      display("Robot cannot deliver. Space is already occupied.")
+      log("Robot cannot deliver. Space is already occupied.")
     }
-    display("--------------------------")
+    log("--------------------------")
   }
   execute_all() {
     // Execute all remaining instructions
@@ -26,7 +26,7 @@ class RobotWorld {
     }
   }
   robot_positions() {
-    // Display the current position of the robots
+    // log the current position of the robots
     return this.robots.map((robot) => { return robot.position })
   }
   houses_with_packages(packageThreshold = 1) {
@@ -38,7 +38,7 @@ class RobotWorld {
         housesOverPackageThreshold.push(key)
       }
     }
-    display(`Houses that have received atleast ${packageThreshold} package${packageThreshold > 1 ? 's' : ''}: [${housesOverPackageThreshold.join('], [')}]`)
+    log(`Houses that have received atleast ${packageThreshold} package${packageThreshold > 1 ? 's' : ''}: [${housesOverPackageThreshold.join('], [')}]`)
     return housesOverPackageThreshold
   }
   deliveries_made() {
@@ -47,13 +47,13 @@ class RobotWorld {
     for (let key in this.deliveries) {
       totalDeliveries += this.deliveries[key]
     }
-    display(`Total deliveries made: ${totalDeliveries}`)
+    log(`Total deliveries made: ${totalDeliveries}`)
     return totalDeliveries
   }
 
   make_delivery(robot) {
     // Deliver a package to the robot's current position
-    display(`Delivery made to ${robot.position.x},${robot.position.y}`)
+    log(`Delivery made to ${robot.position.x},${robot.position.y}`)
 
     // Store deliveries in an object using the format: { 'x,y': numDeliveries }
     let positionKey = `${robot.position.x},${robot.position.y}`

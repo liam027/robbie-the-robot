@@ -1,6 +1,6 @@
-function display(message) {
+function log(message) {
   if(!(process.env === 'test')){
     console.log(message)
   }
 }
-module.exports = display;
+module.exports = log;

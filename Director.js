@@ -1,4 +1,4 @@
-const display = require('./Display')
+const log = require('./Logger')
 const Robot = require('./Robot')
 
 class Director {
@@ -12,14 +12,14 @@ class Director {
 
   operate_next_robot() {
     if(this.turnInstruction) {
-      display(`Turn start for ${this.robotToOperate.name()}`)
-      display(`Instructions this turn: ${this.turnInstruction}`)
+      log(`Turn start for ${this.robotToOperate.name()}`)
+      log(`Instructions this turn: ${this.turnInstruction}`)
       let deliveryStatus = this.execute_instruction()
       this.set_next_turn_instruction()
       return deliveryStatus
     }
     else {
-      display("---- Simulation over. No more instructions available. ----")
+      log("---- Simulation over. No more instructions available. ----")
     }
   }
 
