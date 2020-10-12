@@ -19,7 +19,7 @@ class Director {
       return deliveryStatus
     }
     else {
-      log("---- Simulation over. No more instructions available. ----")
+      log('---- Simulation over. No more instructions available. ----')
     }
   }
 
@@ -41,6 +41,8 @@ class Director {
   }
 
   attempt_delivery() {
+    // Check if there are any other robots in the current location that would
+    // prevent a delivery
     let operatingRobot = this.robotToOperate
     let location = operatingRobot.position
 
