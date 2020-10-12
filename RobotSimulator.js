@@ -69,9 +69,15 @@ class RobotSimulator {
   }
 }
 
-// An example
-let sim = new RobotSimulator(2, '^><>V>>>^><>V>>>')
-sim.execute_all()
+function run_input(numRobots, instructions){
+  let sim = new RobotSimulator(numRobots, instructions)
+  sim.execute_all()
+}
+
+let args = process.argv.slice(2)
+if(process.env.NODE_ENV !== 'test' && args.length >= 2) {
+  run_input(args[0], args[1])
+}
 
 module.exports = RobotSimulator
 
