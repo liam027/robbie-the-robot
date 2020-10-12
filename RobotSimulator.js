@@ -34,13 +34,13 @@ class RobotSimulator {
   houses_with_packages(packageThreshold = 1) {
     // Return the number of houses that have atleast packageThreshold packages
     // delivered
-    let housesOverPackageThreshold = []
+    let housesOverPackageThreshold = 0
     for (let key in this.deliveries) {
       if(this.deliveries[key] >= packageThreshold){
-        housesOverPackageThreshold.push(key)
+        housesOverPackageThreshold++
       }
     }
-    log(`Houses that have received atleast ${packageThreshold} package${packageThreshold > 1 ? 's' : ''}: [${housesOverPackageThreshold.join('], [')}]`)
+    log(`Houses that have received atleast ${packageThreshold} package${packageThreshold > 1 ? 's' : ''}: ${housesOverPackageThreshold}`)
     return housesOverPackageThreshold
   }
   deliveries_made() {
@@ -69,8 +69,8 @@ class RobotSimulator {
 }
 
 // An example
-let sim = new RobotSimulator(3, '<^><<^<V<<<V')
-
+let sim = new RobotSimulator(2, '^><>V>>>^><>V>>>')
 sim.execute_all()
+
 module.exports = RobotSimulator
 
