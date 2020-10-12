@@ -52,7 +52,10 @@ class RobotWorld {
   }
 
   make_delivery(robot) {
+    // Deliver a package to the robot's current position
     display(`Delivery made to ${robot.position.x},${robot.position.y}`)
+
+    // Store deliveries in an object using the format: { 'x,y': numDeliveries }
     let positionKey = `${robot.position.x},${robot.position.y}`
     if (positionKey in this.deliveries) {
       this.deliveries[positionKey] = this.deliveries[positionKey] + 1
