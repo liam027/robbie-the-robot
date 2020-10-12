@@ -28,7 +28,7 @@ class Robot {
         display(`${this.name()} moved East. Now at ${this.position.x}, ${this.position.y}.`)
         break
       case 'V':
-        this.position.x--
+        this.position.y--
         display(`${this.name()} moved South. Now at ${this.position.x}, ${this.position.y}.`)
         break
       default:
