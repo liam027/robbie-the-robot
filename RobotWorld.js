@@ -39,6 +39,7 @@ class RobotWorld {
       }
     }
     display(`Houses that have received atleast ${packageThreshold} package${packageThreshold > 1 ? 's' : ''}: [${housesOverPackageThreshold.join('], [')}]`)
+    return housesOverPackageThreshold
   }
   deliveries_made() {
     // Return the total number of deliveries made
@@ -47,6 +48,7 @@ class RobotWorld {
       totalDeliveries += this.deliveries[key]
     }
     display(`Total deliveries made: ${totalDeliveries}`)
+    return totalDeliveries
   }
 
   make_delivery(robot) {
