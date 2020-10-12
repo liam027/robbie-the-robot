@@ -28,6 +28,7 @@ class RobotSimulator {
   robot_positions() {
     // log the current position of the robots
     let positions = this.director.robots.map((robot) => { return [robot.position.x, robot.position.y] })
+    log('Robot positions:')
     log(positions)
     return positions
   }
