@@ -27,7 +27,9 @@ class RobotSimulator {
   }
   robot_positions() {
     // log the current position of the robots
-    return this.robots.map((robot) => { return robot.position })
+    let positions = this.director.robots.map((robot) => { return [robot.position.x, robot.position.y] })
+    log(positions)
+    return positions
   }
   houses_with_packages(packageThreshold = 1) {
     // Return the number of houses that have atleast packageThreshold packages
